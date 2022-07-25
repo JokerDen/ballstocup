@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using levels;
 using UnityEngine;
 
 public class LevelsManager : MonoBehaviour
@@ -10,11 +11,12 @@ public class LevelsManager : MonoBehaviour
     [SerializeField]
     private int currentIndex;
 
-    public TextReader asset;
+    public GameLevel Current;
 
     public LevelConfig GetCurrent()
     {
         var totalNum = levels.Length;
+        if (totalNum <= 0) return null;
         int index = currentIndex % totalNum;
 
         if (index >= 0 && index < totalNum)

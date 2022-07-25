@@ -18,6 +18,20 @@ public class GameManager : MonoBehaviour
         LoadLevel();
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.R))
+            Restart();
+        
+        if (Input.GetKeyDown(KeyCode.S))
+            levels.Current.ballsSpawner.Spawn();
+    }
+
+    private void Restart()
+    {
+        
+    }
+
     private void LoadLevel()
     {
         var level = levels.GetCurrent();
@@ -28,5 +42,11 @@ public class GameManager : MonoBehaviour
         }
 
         // var gameLevel = Resources.Load<Transform>(level.levelResource);
+    }
+
+    // Broadcasted from Inputable
+    public void OnInputDeltaX(float deltaX)
+    {
+        levels.Current.rotator.Rotate(deltaX);
     }
 }
