@@ -28,9 +28,6 @@ public class GameManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.R))
             Restart();
-        
-        if (Input.GetKeyDown(KeyCode.S))
-            levels.Current.ballsSpawner.Spawn();
     }
 
     public void Restart()
@@ -41,7 +38,7 @@ public class GameManager : MonoBehaviour
     // Broadcasted from Inputable
     public void OnInputDeltaX(float deltaX)
     {
-        levels.Current.rotator.Rotate(deltaX);
+        levels.Current.MoveX(deltaX);
     }
 
     public void ChangeLevel(int diff)

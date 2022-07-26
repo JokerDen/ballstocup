@@ -2,6 +2,7 @@ using System;
 using System.IO;
 using levels;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class LevelsManager : MonoBehaviour
 {
@@ -15,7 +16,9 @@ public class LevelsManager : MonoBehaviour
     public GameLevel Current => current;
     private GameLevel current;
 
-    private LevelConfig GetCurrentConfig()
+    public LevelEvent onLevelLoaded = new LevelEvent();
+
+    public LevelConfig GetCurrentConfig()
     {
         var totalNum = levels.Length;
         if (totalNum <= 0) return null;
@@ -41,10 +44,9 @@ public class LevelsManager : MonoBehaviour
         {
             var prefab = Resources.Load<GameLevel>(config.levelResource);  // TODO: unload on used
             current = Instantiate(prefab);
-            current.ballsSpawner.Spawn(config.totalBallsNum);
-            GameManager.current.ui.levelText.Show(currentIndex + 1);
-            GameManager.current.ui.requiredBallsText.Show(0, config.requiredBallsNum);
+            current.SetUp(config.totalBallsNum, config.requiredBallsNum);
         }
+        onLevelLoaded.Invoke(current);
     }
 }
 
@@ -54,4 +56,9 @@ public class LevelConfig
     public string levelResource;
     public int totalBallsNum;
     public int requiredBallsNum;
+}
+
+public class LevelEvent : UnityEvent<GameLevel>
+{
+    
 }
