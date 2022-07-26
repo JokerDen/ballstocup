@@ -1,3 +1,4 @@
+using ui;
 using UnityEngine;
 
 /**
@@ -5,17 +6,22 @@ using UnityEngine;
  */
 public class GameManager : MonoBehaviour
 {
+    private static GameManager instance;
+    public static GameManager current => instance;
+    
     public LevelsManager levels;
+    public GameUI ui;
 
     private void Awake()
     {
+        instance = this;
         Application.targetFrameRate = 60;
         Time.fixedDeltaTime = 0.02f;
     }
 
     private void Start()
     {
-        LoadLevel();
+        Restart();
     }
 
     private void Update()
@@ -27,26 +33,20 @@ public class GameManager : MonoBehaviour
             levels.Current.ballsSpawner.Spawn();
     }
 
-    private void Restart()
+    public void Restart()
     {
-        
-    }
-
-    private void LoadLevel()
-    {
-        var level = levels.GetCurrent();
-        if (level == null)
-        {
-            Debug.Log("Can't load level");
-            return;
-        }
-
-        // var gameLevel = Resources.Load<Transform>(level.levelResource);
+        levels.LoadLevel(levels.CurrentIndex);
     }
 
     // Broadcasted from Inputable
     public void OnInputDeltaX(float deltaX)
     {
         levels.Current.rotator.Rotate(deltaX);
+    }
+
+    public void ChangeLevel(int diff)
+    {
+        var idx = Mathf.Max(levels.CurrentIndex + diff, 0);
+        levels.LoadLevel(idx);
     }
 }
