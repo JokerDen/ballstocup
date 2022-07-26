@@ -68,7 +68,7 @@ namespace ui
         private void ShowCondition(GameObject condition)
         {
             failCondition.SetActive(condition == failCondition);
-            gameplayCondition.SetActive(condition == gameplayCondition);
+            // gameplayCondition.SetActive(condition == gameplayCondition);
             winCondition.SetActive(condition == winCondition);
         }
     }

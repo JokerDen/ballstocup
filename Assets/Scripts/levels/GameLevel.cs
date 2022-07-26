@@ -15,7 +15,8 @@ namespace levels
         private int totalBalls;
         private int requiredBalls;
 
-        public int SucceedBalls => successful.Num;
+        // public int SucceedBalls => successful.Num;
+        public int SucceedBalls => finishOnWin ? Mathf.Min(successful.Num, requiredBalls) : successful.Num;
         public int RequiredBalls => requiredBalls;
         public int LeftBalls => Mathf.Max(totalBalls - finished.Num, 0);
 
@@ -25,6 +26,8 @@ namespace levels
 
         [SerializeField] float finishDelay;
 
+        public static bool finishOnWin; // static useful for A/B test
+
         private void Start()
         {
             finished.onNumChanged.AddListener(OnFinishedNumChanged);
@@ -33,6 +36,12 @@ namespace levels
 
         private void OnSuccessfulNumChanged(int arg0)
         {
+            if (finishOnWin && arg0 == requiredBalls)
+            {
+                CancelInvoke("Finish");
+                Invoke("Finish", finishDelay);
+            }
+            
             onBallsChanged.Invoke();
         }
 
@@ -58,7 +67,8 @@ namespace levels
         {
             totalBalls = balls;
             requiredBalls = required;
-            
+
+            ballsSpawner.prefab = GameManager.current.ballPrefab.gameObject;
             ballsSpawner.Spawn(balls);
         }
 

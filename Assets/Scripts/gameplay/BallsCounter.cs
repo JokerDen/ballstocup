@@ -10,7 +10,7 @@ namespace gameplay
         
         public int Num => counted.Count;
         
-        public List<Rigidbody> counted = new List<Rigidbody>();
+        private List<Rigidbody> counted = new List<Rigidbody>();
 
         private void OnTriggerStay(Collider other)
         {

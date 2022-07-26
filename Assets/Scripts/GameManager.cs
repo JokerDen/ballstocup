@@ -1,4 +1,4 @@
-using ui;
+using gameplay;
 using UnityEngine;
 
 /**
@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     public static GameManager current => instance;
     
     public LevelsManager levels;
-    public GameUI ui;
+    public Ball ballPrefab;
 
     private void Awake()
     {

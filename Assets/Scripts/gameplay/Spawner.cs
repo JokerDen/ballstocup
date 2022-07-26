@@ -12,15 +12,24 @@ public class Spawner : MonoBehaviour
     public void Spawn(int num)
     {
         // TODO: Poisson Disc Sampling to generate balls inside circle/sphere
-        for (int i = 0; i < num; i++)
-            Spawn();
-    }
 
-    public void Spawn()
-    {
-        var item = Instantiate(prefab, container.position + Random.insideUnitSphere * radius, container.rotation, container);
-        items.Add(item);
-        item.SetActive(true);
+        var body = prefab.GetComponent<Rigidbody>();
+        bool fixedZ = (body.constraints & RigidbodyConstraints.FreezePositionZ) != RigidbodyConstraints.None;
+        
+        for (int i = 0; i < num; i++)
+        {
+            // var pos = container.position + Random.insideUnitSphere * radius;
+            Vector3 offset = Vector3.zero;
+            if (fixedZ)
+                offset = Random.insideUnitCircle * radius;
+            else
+                offset = Random.insideUnitSphere * radius;
+            
+            var pos = container.position + offset;
+            var item = Instantiate(prefab, pos, container.rotation, container);
+            items.Add(item);
+            item.SetActive(true);
+        }
     }
 
     private void OnDrawGizmos()

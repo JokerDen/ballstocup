@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ReparenterTrigger : MonoBehaviour
+public class ResizerTrigger : MonoBehaviour
 {
-    [SerializeField] Transform reparent;
+    [SerializeField] float scaleModifier;
     
     private List<Rigidbody> activated = new List<Rigidbody>();
 
@@ -14,6 +14,6 @@ public class ReparenterTrigger : MonoBehaviour
         
         activated.Add(body);
         
-        body.transform.SetParent(reparent);
+        body.transform.localScale *= scaleModifier;
     }
 }
