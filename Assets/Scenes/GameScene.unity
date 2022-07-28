@@ -454,7 +454,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &116105159
 GameObject:
@@ -1474,7 +1474,7 @@ Transform:
   - {fileID: 1062164082}
   - {fileID: 116105162}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &681414470
 GameObject:
@@ -2141,10 +2141,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ac7bc7847ad2864e97b58237bc03caf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sourceSVG: {fileID: 4900000, guid: cab34ac8581b6c94b9ec2e27528531cf, type: 3}
+  sourceSVG: {fileID: 4900000, guid: 43a272df297ab2d4f99eb89154de4d76, type: 3}
   pathToGenerateMesh: Assets/
   sharedMaterial: {fileID: 2100000, guid: 77381cae0fe57c245b899dca6201487a, type: 2}
-  overwriteMeshAsset: 0
+  startPrefab: {fileID: 2481499766877310976, guid: 0573dd9e2082d8e409e4f1851ae91a78, type: 3}
+  overwriteMeshAsset: 1
+  innerRadius: 5
+  outerRadius: 6.5
+  accuracyNum: 12
+  interval: 8
+  reverseDirection: 0
+  scale: 0.06
 --- !u!4 &1261524178
 Transform:
   m_ObjectHideFlags: 0
@@ -2157,7 +2164,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1267474979
 GameObject:
@@ -2613,7 +2620,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1466582947
 MonoBehaviour:
