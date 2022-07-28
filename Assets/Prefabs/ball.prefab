@@ -45,6 +45,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50b0f3d81e3444739a60cf9c8abb7318, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  body: {fileID: 821507761520524272}
+  addGravity: {x: 0, y: -5, z: 0}
+  overwritePhysicMaterial: 0
+  bounce: 0.2
+  friction: 0.5
 --- !u!54 &821507761520524272
 Rigidbody:
   m_ObjectHideFlags: 0

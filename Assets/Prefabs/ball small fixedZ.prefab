@@ -57,7 +57,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4103583526819323071, guid: 45ba034e1b352284ab4fb3688c826d1d, type: 3}
       propertyPath: m_Name
-      value: ball small fixedY
+      value: ball small fixedZ
       objectReference: {fileID: 0}
     - target: {fileID: 4991809894941232788, guid: 45ba034e1b352284ab4fb3688c826d1d, type: 3}
       propertyPath: m_LocalScale.x
@@ -74,6 +74,10 @@ PrefabInstance:
     - target: {fileID: 6514714466612637052, guid: 45ba034e1b352284ab4fb3688c826d1d, type: 3}
       propertyPath: m_Constraints
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8602112727365835296, guid: 45ba034e1b352284ab4fb3688c826d1d, type: 3}
+      propertyPath: overwritePhysicMaterial
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 45ba034e1b352284ab4fb3688c826d1d, type: 3}
